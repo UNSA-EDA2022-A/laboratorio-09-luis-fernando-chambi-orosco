@@ -86,7 +86,7 @@ public class GraphAdjacentList implements Graph {
     }
 
     public int countConnectedComponents() {
-
+        
         return -1;
     }
 
@@ -103,8 +103,8 @@ public class GraphAdjacentList implements Graph {
         for (Vertex a : vertices) {
             a.removeAdjacentVertex(vertex);
         }
-        setNumVertices(numVertices);
         vertices.remove(auxiliar);
+        numVertices--;
         return true;
     }
 
