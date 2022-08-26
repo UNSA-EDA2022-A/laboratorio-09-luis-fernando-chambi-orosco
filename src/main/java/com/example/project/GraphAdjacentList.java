@@ -90,10 +90,10 @@ public class GraphAdjacentList implements Graph {
     }
 
     public ArrayList<Vertex> depthFirstSearch(Vertex n, ArrayList<Vertex> visited) {
-        visited.add(n);
-        for (Vertex v : n.adjacentVertices) {
-            if (!vertices.contains(v)) {
-                depthFirstSearch(n, visited);
+        visited.add(n);// se añade a la lista de visitados al vertice que se le esta pasando
+        for (Vertex v : n.adjacentVertices) { //recorremos los adyacentes de ese vertice
+            if (!vertices.contains(v)) {// verifica los que no fueron visitados
+                depthFirstSearch(n, visited);// llama al  depthFirstSearch con el nuevo vertice 
             }
         }
         return visited;
@@ -101,9 +101,9 @@ public class GraphAdjacentList implements Graph {
 
     public int countConnectedComponents() {
         int cont = 1;
-        ArrayList<Vertex> s = depthFirstSearch(vertices.get(0));
-        for (int i=1;this.numVertices>0 && i<this.numVertices;i++){
-            if(!s.contains(vertices.get(i)))
+        ArrayList<Vertex> s = depthFirstSearch(vertices.get(0));//almacena todo los vertice conectados
+        for (int i=1;this.numVertices>0 && i<this.numVertices;i++){// recorre los vertices a partir del segundo vertice 
+            if(!s.contains(vertices.get(i)))// verifica que no lo contenga
             cont++;
         }
 
@@ -112,18 +112,24 @@ public class GraphAdjacentList implements Graph {
 
     public boolean removeVertex(int vertex) {
         Vertex auxiliar = null;
+        // recorremos todo los vertices 
         for (Vertex v : vertices) {
+            // buscamos el vertice que vamos a eliminar 
             if (vertex == v.data) {
                 auxiliar = v;
             }
         }
+        //sino se encuentra el vertice devuelve false
         if (auxiliar == null) {
             return false;
         }
+        // eliminamos las aristas adyacentes
         for (Vertex a : vertices) {
             a.removeAdjacentVertex(vertex);
         }
+        // removemos el vertice
         vertices.remove(auxiliar);
+        //actualizamos el numero de vertices 
         numVertices--;
         return true;
     }

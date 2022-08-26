@@ -79,9 +79,9 @@ public class GraphMatrix implements Graph {
 
     public int countConnectedComponents() {
          int cont = 1;
-        ArrayList<Integer> s = depthFirstSearch(0);
-        for (int i=1;this.numVertices>0 && i<this.numVertices;i++){
-            if(!s.contains(i))
+        ArrayList<Integer> s = depthFirstSearch(0);// almacena los conectados al primer vertice
+        for (int i=1;this.numVertices>0 && i<this.numVertices;i++){// recorre los vertices a partir del segundo vertice 
+            if(!s.contains(i))// verifica que no lo contenga
             cont++;
         }
 
