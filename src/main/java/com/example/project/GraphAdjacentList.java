@@ -33,7 +33,7 @@ public class GraphAdjacentList implements Graph {
             toV = new Vertex(to);
             vertices.add(toV);
             numVertices++;
-        }        
+        }
         return fromV.addAdjacentVertex(toV);
     }
 
@@ -69,9 +69,9 @@ public class GraphAdjacentList implements Graph {
         return sb.toString();
     }
 
-    public int getNumEdges(){
+    public int getNumEdges() {
         int count = 0;
-        for(int i = 0; i < this.vertices.size(); i++){
+        for (int i = 0; i < this.vertices.size(); i++) {
             count += this.vertices.get(i).adjacentVertices.size();
         }
         return count;
@@ -85,12 +85,27 @@ public class GraphAdjacentList implements Graph {
         this.numVertices = numVertices;
     }
 
-    public int countConnectedComponents(){
+    public int countConnectedComponents() {
+        
         return -1;
     }
 
-    public boolean removeVertex(int vertex){
-        return false;
+    public boolean removeVertex(int vertex) {
+        Vertex auxiliar = null;
+        for (Vertex v : vertices) {
+            if (vertex == v.data) {
+                auxiliar = v;
+            }
+        }
+        if (auxiliar == null) {
+            return false;
+        }
+        for (Vertex a : vertices) {
+            a.removeAdjacentVertex(vertex);
+        }
+        vertices.remove(auxiliar);
+        numVertices--;
+        return true;
     }
 
     public static void main(String args[]) {
@@ -100,7 +115,7 @@ public class GraphAdjacentList implements Graph {
         graph.addEdge(2, 5);
         graph.addEdge(2, 3);
         graph.addEdge(3, 4);
-        graph.addEdge(4, 1);        
+        graph.addEdge(4, 1);
         System.out.println(graph);
     }
 }

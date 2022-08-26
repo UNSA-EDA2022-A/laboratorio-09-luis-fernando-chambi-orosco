@@ -18,6 +18,8 @@ public class Exercise2 {
 		System.out.println("Numero de aristas: " + graph.getNumEdges());
 
 		obj.removeVertex(graph, 1);
+		
+
 
 		System.out.println("Numero de vertices: " + graph.getNumVertices());
 		System.out.println("Numero de aristas: " + graph.getNumEdges());
