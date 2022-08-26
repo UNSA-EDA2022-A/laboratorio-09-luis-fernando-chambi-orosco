@@ -78,8 +78,14 @@ public class GraphMatrix implements Graph {
     }
 
     public int countConnectedComponents() {
+         int cont = 1;
+        ArrayList<Integer> s = depthFirstSearch(0);
+        for (int i=1;this.numVertices>0 && i<this.numVertices;i++){
+            if(!s.contains(i))
+            cont++;
+        }
 
-        return -1;
+        return cont;
     }
 
     public static void main(String args[]) {
