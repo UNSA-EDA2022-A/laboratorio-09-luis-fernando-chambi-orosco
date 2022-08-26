@@ -90,7 +90,7 @@ public class GraphAdjacentList implements Graph {
     }
 
     public ArrayList<Vertex> depthFirstSearch(Vertex n, ArrayList<Vertex> visited) {
-        visited.add(n);// se añade a la lista de visitados al vertice que se le esta pasando
+        visited.add(n);// se agrega a la lista de visitados al vertice que se le esta pasando
         for (Vertex v : n.adjacentVertices) { //recorremos los adyacentes de ese vertice
             if (!vertices.contains(v)) {// verifica los que no fueron visitados
                 depthFirstSearch(n, visited);// llama al  depthFirstSearch con el nuevo vertice 
